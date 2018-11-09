@@ -4,10 +4,15 @@
 # Reference - https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-centos-7
 
 
-fallocate -l 4G /swapfile
+dd if=/dev/zero of=/swapfile count=4096 bs=1MiB
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-swapon -s
 
 echo -e "/swapfile   swap    swap    sw  0   0" >> /etc/fstab
+
+# Optional
+# sudo sysctl vm.swappiness=10
+
+# echo -e "vm.swappiness = 10" >> /etc/sysctl.conf
+# echo -e "vm.vfs_cache_pressure = 50" >> /etc/sysctl.conf
