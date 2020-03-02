@@ -21,7 +21,7 @@ if grep -q "/swapfile" /etc/fstab ; then
     echo "/swapfile - already installed!"
     exit 1
 else
-    echo _installSwap
+    _installSwap
     echo "Done!"
     exit 0
 fi
